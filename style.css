@@ -1,0 +1,362 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+
+/* Simple navbar up top */
+nav {
+  position: fixed; /* Stays visible on scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: #001f3f; /* Dark navy */
+  padding: 15px 10%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 3px solid #ffdc00; /* Yellow accent */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #ffdc00; /* Yellow links */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Highlight for the active nav link */
+nav ul li a.active {
+  background-color: #ffdc00;
+  color: #001f3f; /* Invert colors when active */
+}
+
+nav ul li a:hover {
+  background-color: #ffdc00;
+  color: #001f3f;
+}
+
+/* Each file’s content goes in a .section */
+.section {
+  min-height: 100vh; /* Full viewport height per section */
+  padding: 80px 10% 40px; /* Space at top so content isn’t hidden by nav */
+  box-sizing: border-box;
+}
+
+/* A little extra styling so we see each section distinctly */
+#home {
+  background: #001f3f;
+}
+#services {
+  background: #001f3f;
+}
+#portfolio {
+  background: #001f3f;
+}
+#blog {
+  background: #001f3f;
+}
+#resume {
+  background: #001f3f;
+}
+#contact {
+  background: #001f3f;
+}
+
+header {
+  padding: 60px 10% 40px;
+  background: none;
+  text-align: left;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #ffdc00;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+header h2 {
+  font-size: 2rem;
+  color: #ffdc00;
+  margin-bottom: 15px;
+}
+
+section {
+  padding: 30px 10% 60px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+section p {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 10%;
+  background-color: #001f3f;
+  color: #ffdc00;
+  position: static;
+  border-top: 1px solid #ffdc00;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+  list-style: disc inside;
+  margin-left: 1.5rem;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form label {
+  font-weight: 600;
+  color: #ffdc00;
+  margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form select {
+  padding: 10px;
+  border: 2px solid #ffdc00;
+  border-radius: 5px;
+  font-size: 1em;
+  background: #fff;
+  color: #000;
+}
+
+form input[type="submit"],
+form input[type="reset"] {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ffdc00;
+  color: #001f3f;
+  font-size: 1em;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+form input[type="submit"]:hover,
+form input[type="reset"]:hover {
+  background-color: #001f3f;
+  color: #ffdc00;
+}
+
+.portfolio-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.project {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid #ffdc00;
+  border-radius: 10px;
+  padding: 15px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.project h2 {
+  color: #ffdc00;
+  margin: 10px 0;
+}
+
+.blog-post {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ffdc00;
+}
+
+.blog-post h2 {
+  color: #ffdc00;
+  margin-bottom: 10px;
+}
+
+.blog-post a {
+  color: #ffdc00;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
+
+/* 10) RESPONSIVE MEDIA QUERIES */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 15px;
+  }
+
+  header,
+  section,
+  footer {
+    padding: 40px 5%;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  .portfolio-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  header,
+  section,
+  footer {
+    padding: 30px 5%;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+}
+.section:not(#blog):not(#contact)::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-top: 2px solid #ffdc00; /* Yellow divider */
+  margin: 20px 0; /* Space above and below the line */
+}
+.contact-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #001f3f;
+  border: 2px solid #ffdc00;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 31, 63, 0.3);
+}
+
+.contact-container h1 {
+  text-align: center;
+  color: #001f3f;
+  margin-bottom: 20px;
+}
+
+.contact-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-container label {
+  font-weight: bold;
+  color: #ffdc00;
+  margin-bottom: 5px;
+}
+
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container textarea,
+.contact-container select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #001f3f;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.contact-container input[type="submit"],
+.contact-container input[type="reset"] {
+  padding: 10px;
+  border: 1px solid #ffdc00;
+  background-color: #001f3f;
+  color: #ffdc00; /* Yellow text on dark navy */
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-container input[type="submit"]:hover,
+.contact-container input[type="reset"]:hover {
+  background-color: #ffdc00;
+  color: #001f3f;
+}
+
+.contact-container .button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* RESPONSIVE ADJUSTMENTS FOR TABLETS */
+@media (max-width: 768px) {
+  .contact-container {
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+}
+
+/* RESPONSIVE ADJUSTMENTS FOR PHONES */
+@media (max-width: 480px) {
+  .contact-container {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+  .contact-container form label {
+    font-size: 0.9em; /* Slightly smaller labels on very small screens */
+  }
+  .contact-container input[type="submit"],
+  .contact-container input[type="reset"] {
+    padding: 8px;
+    font-size: 0.9em; /* Make buttons proportionally smaller */
+  }
+}
