@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Single-Page Website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR with anchor links to each "section" below -->
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- SECTION placeholders (one per file) -->
+    <div class="section" id="home"></div>
+    <div class="section" id="services"></div>
+    <div class="section" id="portfolio"></div>
+    <div class="section" id="blog"></div>
+    <div class="section" id="resume"></div>
+    <div class="section" id="contact"></div>
+
+    <script>
+      /**
+       * 1) LOAD CONTENT FROM EACH HTML FILE INTO THE CORRESPONDING SECTION
+       *    WITHOUT changing the text/content in those files themselves.
+       */
+      function loadSectionContent(sectionId, fileName) {
+        fetch(fileName)
+          .then((response) => response.text())
+          .then((html) => {
+            // Parse the HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            // Insert either the <section> content or entire body
+            // (depending on your structure).
+            // For simplicity, let's just take everything inside <body>.
+            document.getElementById(sectionId).innerHTML = doc.body.innerHTML;
+          })
+          .catch((err) => console.error(`Error loading ${fileName}:`, err));
+      }
+
+      // Load each page’s content into the appropriate section
+      loadSectionContent("home", "home.html");
+      loadSectionContent("services", "services.html");
+      loadSectionContent("portfolio", "portfolio.html");
+      loadSectionContent("blog", "blog.html");
+      loadSectionContent("resume", "resume.html");
+      loadSectionContent("contact", "contact.html");
+
+      /**
+       * 2) HIGHLIGHT NAV LINK WHEN SCROLLING TO ITS SECTION
+       *    We’ll use IntersectionObserver to detect which section is in view.
+       */
+      const sections = document.querySelectorAll(".section");
+      const navLinks = document.querySelectorAll("nav ul li a");
+
+      // IntersectionObserver options (tweak threshold as needed)
+      const options = {
+        root: null, // use viewport
+        rootMargin: "0px",
+        threshold: 0.5, // section must be 50% visible
+      };
+
+      let observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // If this section is in view, highlight its corresponding nav link
+            const id = entry.target.getAttribute("id");
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }, options);
+
+      // Observe each section
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>

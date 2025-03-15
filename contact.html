@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Contact Me</h1>
+    </header>
+    <section>
+      <div class="contact-container">
+        <form
+          action="submit_form.php"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required />
+          </div>
+          <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+          </div>
+          <div>
+            <label for="attachment">Attachment:</label>
+            <input type="file" id="attachment" name="attachment" />
+          </div>
+          <div>
+            <input type="checkbox" id="subscribe" name="subscribe" />
+            <label for="subscribe">Subscribe to newsletter</label>
+          </div>
+          <div class="button-group">
+            <input type="submit" value="Send Message" />
+            <input type="reset" value="Reset" />
+          </div>
+        </form>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2025 My Personal Website</p>
+    </footer>
+  </body>
+</html>
